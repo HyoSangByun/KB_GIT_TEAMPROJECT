@@ -1,0 +1,26 @@
+#book-list {
+  list-style: none; /* ul 기본 스타일 제거 */
+  padding: 0;
+  display: flex; /* flexbox 레이아웃 */
+  flex-wrap: wrap; /* 여러 줄로 표시 */
+}
+
+#book-list li {
+  width: 30%; /* 각 아이템 너비 */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#book-list a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: #333; /* 링크 색상 */
+}
+
+#book-list .author {
+  font-style: italic;
+}
+
+#book-list .price {
+  font-weight: bold;
+}
