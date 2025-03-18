@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>책 추천 페이지</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        display: flex;
+      }
+
+      .sidebar {
+        width: 200px;
+        background-color: #93b0d0;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding-top: 20px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin: 5px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        font-weight: bold;
+      }
+
+      .sidebar a:hover {
+        background-color: #ffffff;
+        color: #48a0ff;
+      }
+
+      .content {
+        margin-left: 220px;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .title {
+        text-align: center;
+        margin: 20px 0;
+        padding: 30px 0;
+      }
+
+      .it {
+        color: rgb(37, 132, 255);
+      }
+      .best-books {
+        color: black;
+      }
+
+      .book-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .book-item {
+        display: flex;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 600px;
+        padding: 15px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .book-item img {
+        width: 160px;
+        height: 213px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 20px;
+      }
+
+      .book-title {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      .book-price {
+        color: red;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .book-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: #5aaaff;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .book-link:hover {
+        background-color: #0056b3;
+      }
+
+      .book-info {
+        font-size: 14px;
+        color: #676666;
+        margin-top: 10px;
+      }
+
+      .book-info span {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .intro-text {
+        text-align: left;
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="/">🏠 HOME</a>
+      <a href="novel.html">소설</a>
+      <a href="essay.html">에세이</a>
+      <a href="travel.html">여행</a>
+      <a href="it.html">IT</a>
+      <a href="selfdev.html">자기계발</a>
+    </div>
+
+    <!-- 콘텐츠 영역 -->
+    <div class="content">
+      <h1 class="title">
+        <span class="it">IT</span> <span class="best-books">베스트 도서</span>
+      </h1>
+
+      <div class="book-list" id="bookList"></div>
+    </div>
+
+    <script>
+      const books = [
+        {
+          title: '기계는 왜 학습하는가',
+          intro: 'AI를 움직이는 우아한 수학',
+          price: '25000',
+          author: '아난타스와미',
+          translator: '노승영',
+          publisher: '까치(까치글방)',
+          publishDate: '2025년 02월 28일',
+          url: 'https://www.yes24.com/product/goods/142971052',
+          image: 'images/기계는 왜 학습하는가.jpeg',
+        },
+        {
+          title: '진짜 쓰는 실무 엑셀',
+          intro:
+            '유튜브 대표 엑셀 채널, 오빠두가 알려 주는 엑셀 함수, 보고서 작성, 데이터 분석 노하우!',
+          price: '21000',
+          author: '전진권',
+          publisher: '제이펍',
+          publishDate: '2022년 02월 15일',
+          url: 'https://www.yes24.com/product/goods/106711883',
+          image: 'images/진짜 쓰는 실무 엑셀.jpeg',
+        },
+        {
+          title: 'Do it! 점프 투 파이썬',
+          intro: '중학생도 첫날부터 실습하는 초고속 입문서 [전면개정2판]',
+          price: '22000',
+          author: '박응용',
+          publisher: '이지스퍼블리싱',
+          publishDate: '2026년 06월',
+          url: 'https://www.yes24.com/product/goods/119293186',
+          image: 'images/Do it! 점프 투 파이썬.jpeg',
+        },
+        {
+          title: '누구나 아는 나만 모르는 엑셀',
+          intro: '이보다 더 쉬운 엑셀 책은 없습니다',
+          price: '17000',
+          author: '이성원',
+          publisher: '한빛미디어',
+          publishDate: '2024년 11월 29일',
+          url: 'https://www.yes24.com/product/goods/139798543',
+          image: 'images/누구나 아는 나만 모르는 엑셀.jpeg',
+        },
+        {
+          title: '이게 되네? 챗GPT 미친 활용법 71제',
+          intro:
+            '7배 더 빠르게, 7배 나은 퀄리티로 진짜 현업에 사용해온 오대리의 ‘71가지 미친 업무 자동화’ with o1, 소라, 캔버스, 서치, 프로젝트, 고급 음성모드, GPTs',
+          price: '24000',
+          author: '오힘찬',
+          publisher: '골든래빗',
+          publishDate: '2025년 01월 10일',
+          url: 'https://www.yes24.com/product/goods/140835200',
+          image: 'images/이게되네.jpeg',
+        },
+        {
+          title: '쉽게 풀어쓴 C언어 Express',
+          price: '32000',
+          author: '천인국',
+          publisher: '생능출판사',
+          publishDate: '2023년 01월 17일',
+          url: 'https://www.yes24.com/product/goods/116777159',
+          image: 'images/쉽게 풀어쓴 C언어 Express.jpeg',
+        },
+        {
+          title: 'IT 세상을 만나는 컴퓨터 개론',
+          price: '29000',
+          author: '조성호',
+          publisher: '한빛아카데미',
+          publishDate: '2024년 02월 12일',
+          url: 'https://www.yes24.com/product/goods/125027721',
+          image: 'images/IT 세상을 만나는 컴퓨터 개론.jpeg',
+        },
+        {
+          title: '명품 JAVA Programming',
+          price: '24000',
+          author: '황기태, 김효수',
+          publisher: '생능출판사',
+          publishDate: '2024년 07월 23일',
+          url: 'https://www.yes24.com/product/goods/128928355',
+          image: 'images/명품 JAVA Programming.jpeg',
+        },
+        {
+          title: 'C언어로 쉽게 풀어쓴 자료구조',
+          price: '29000',
+          author: '천인국, 공용해, 하상호',
+          publisher: '생능출판사',
+          publishDate: '2019년 02월 22일',
+          url: 'https://www.yes24.com/product/goods/69750539',
+          image: 'images/C언어로 쉽게 풀어쓴 자료구조.jpeg',
+        },
+        {
+          title: '진짜 쓰는 프리미어 프로 영상 편집 2025',
+          intro: '유튜브 및 SNS 콘텐츠 제작을 위한 동영상 편집 실무 강의',
+          price: '26000',
+          author: '조블리',
+          publisher: '제이펍',
+          publishDate: '2025년 02월 24일',
+          url: 'https://www.yes24.com/product/goods/142841603',
+          image: 'images/진짜 쓰는 프리미어 프로 영상 편집 2025.jpeg',
+        },
+      ];
+
+      const bookListElement = document.getElementById('bookList');
+
+      books.forEach((book) => {
+        const bookItemElement = document.createElement('div');
+        bookItemElement.classList.add('book-item');
+        bookItemElement.innerHTML = `
+          <img src="${book.image}" alt="${book.title}" />
+          <div>
+            <h3 class="book-title">${book.title}</h3>
+            <div class="intro-text">${book.intro || ''}</div>
+            <p class="book-price">₩ ${book.price}</p>
+            <a href="${book.url}" class="book-link">보러가기</a>
+            <div class="book-info">
+              <span>저자: ${book.author}</span>
+              ${book.translator ? `<span>역자: ${book.translator}</span>` : ''}
+            </div>
+            <div class="book-info">
+              <span>출판사: ${book.publisher}</span>
+              <span>출간일: ${book.publishDate}</span>
+            </div>
+          </div>
+        `;
+        bookListElement.appendChild(bookItemElement);
+      });
+    </script>
+  </body>
+</html>
