@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>책 목록</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        margin-bottom: 20px;
+        font-size: 50px;
+        color: #333;
+      }
+      .book-container {
+        display: flex;
+        gap: 20px;
+      }
+      .book {
+        width: 200px;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s;
+      }
+      .book:hover {
+        transform: scale(1.05);
+      }
+      .book img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+      .book a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+      .price {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>여행 카테고리</h1>
+    <div class="book-container">
+      <div class="book">
+        <a href="https://www.yes24.com/product/goods/141694514" target="_blank">
+          <img src="https://image.yes24.com/goods/141694514/XL" alt="책 표지" />
+          <span>리얼 도쿄</span>
+          <div class="price">₩21,000</div>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://www.yes24.com/product/goods/129366114" target="_blank">
+          <img src="https://image.yes24.com/goods/129366114/XL" alt="책 표지" />
+          <span>나는 일상을 여행하기로 했다</span>
+          <div class="price">₩19,800</div>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://www.yes24.com/product/goods/143581268" target="_blank">
+          <img src="https://image.yes24.com/goods/143581268/XL" alt="책 표지" />
+          <span>여행의 위로</span>
+          <div class="price">₩17,500</div>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://www.yes24.com/product/goods/142164924" target="_blank">
+          <img src="https://image.yes24.com/goods/142164924/XL" alt="책 표지" />
+          <span>에이든 우리나라 전국 여행지도</span>
+          <div class="price">₩19,800</div>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://www.yes24.com/product/goods/142806961" target="_blank">
+          <img src="https://image.yes24.com/goods/142806961/XL" alt="책 표지" />
+          <span>프랑스, 예술로 여행하기</span>
+          <div class="price">₩23,800</div>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
