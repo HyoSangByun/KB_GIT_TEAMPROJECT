@@ -7,9 +7,43 @@
 </head>
 <body>
     <!-- 책 이미지, 제목, 가격, yes24 url -->
-    <h1>📚 에세이 추천 책 </h1>
-    <div class = "book-container">
-        
+    <h1>📚 에세이 추천 책 LIST</h1>
+    <div class = "book-container" id="bookContainer">
+        <script>
+            const books = [
+                { title:"어른의 행복은 조용하다다",
+                    cover: "https://image.yes24.com/goods/136298166/XL",
+                    price: "16,020원",
+                    link: "https://www.yes24.com/product/goods/136298166"
+                }, { title:"삶이라는 완벽한 농담",
+                    cover: "https://image.yes24.com/goods/142843658/XL",
+                    price: "16,020원",
+                    link: "https://www.yes24.com/product/goods/142843658"
+                }, { title:"살아갈 날들을 위한 괴테의 시시",
+                    cover: "https://image.yes24.com/goods/141253984/XL",
+                    price: "17,100원",
+                    link: "https://www.yes24.com/product/goods/141253984"
+                }
+            ];
+
+            const bookContainer = document.getElementById("bookContainer");
+
+            books.forEach(book => {
+                const bookCard = document.createElement("div");
+                bookCard.classList.add('book-card')
+
+                bookCard.innerHTML = `
+                <img src="${book.cover}" alt="${book.title}">
+                <div class="book-title">${book.title}</div>
+                <div class="book-price">${book.price}</div>
+                <a href="${book.link}" target="_blank" class="book-link">YES24 구매 링크</a>
+            `;
+
+            bookContainer.appendChild(bookCard);
+            })
+        </script>
+
+
     </div>
 </body>
 </html>
