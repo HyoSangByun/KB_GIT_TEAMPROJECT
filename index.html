@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .sidebar {
+        width: 200px;
+        background-color: #93b0d0;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding-top: 20px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin: 5px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        font-weight: bold;
+      }
+
+      .sidebar a:hover {
+        background-color: #ffffff;
+        color: #48a0ff;
+      }
+
+      .content {
+        margin-left: 220px;
+        padding: 20px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="main.html" , target="content">🏠 HOME</a>
+      <a href="novel/novel.html" , target="content">소설</a>
+      <a href="essay/essay.html" , target="content">에세이</a>
+      <a href="travel/travelBooks.html" , target="content">여행</a>
+      <a href="IT/ITBookRecommend.html" , target="content">IT</a>
+      <a href="self-dev/self-dev.html" , target="content">자기계발</a>
+    </div>
+
+    <!-- 콘텐츠 영역 -->
+    <div class="content">
+      <iframe width="100%," height="100%," name="content" ,frameborder="0">
+      </iframe>
+    </div>
+  </body>
+</html>

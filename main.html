@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>책 추천 페이지</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        display: flex;
+      }
+      /* 독서 팁/가이드 */
+      #reading-tips {
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      #reading-tips h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+        font-weight: 600;
+        color: #444;
+      }
+
+      #reading-tips .tips-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      #reading-tips .tip {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      #reading-tips .tip h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #3498db;
+        font-weight: 600;
+      }
+
+      #reading-tips .tip p {
+        color: #666;
+        line-height: 1.5;
+      }
+
+      #reading-tips .tip:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 새로운 소식 섹션 */
+      #whats-new {
+        background-color: #f9f9f9;
+        padding: 60px 20px;
+      }
+
+      #whats-new h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+        font-weight: 600;
+        text-align: center;
+        color: #444;
+      }
+
+      #whats-new .news-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      #whats-new .news-item {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      #whats-new .news-item h3 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #3498db;
+      }
+      #whats-new .news-item p {
+        margin-bottom: 15px;
+        color: #666;
+      }
+      #whats-new .news-item a {
+        display: inline-block;
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      #whats-new .news-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .sidebar {
+        width: 200px;
+        background-color: #93b0d0;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding-top: 20px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin: 5px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        font-weight: bold;
+      }
+
+      .sidebar a:hover {
+        background-color: #ffffff;
+        color: #48a0ff;
+      }
+
+      .content {
+        margin-left: 220px;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .title {
+        text-align: center;
+        margin: 20px 0;
+        padding: 30px 0;
+      }
+
+      .it {
+        color: rgb(37, 132, 255);
+      }
+      .best-books {
+        color: black;
+      }
+
+      .book-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .book-item {
+        display: flex;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 600px;
+        padding: 15px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .book-item img {
+        width: 160px;
+        height: 213px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 20px;
+      }
+
+      .book-title {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      .book-price {
+        color: red;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .book-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: #5aaaff;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .book-link:hover {
+        background-color: #0056b3;
+      }
+
+      .book-info {
+        font-size: 14px;
+        color: #676666;
+        margin-top: 10px;
+      }
+
+      .book-info span {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .intro-text {
+        text-align: left;
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="sidebar">
+      <a href="/">🏠 HOME</a>
+      <a href="novel.html">소설</a>
+      <a href="essay.html">에세이</a>
+      <a href="travel.html">여행</a>
+      <a href="it.html">IT</a>
+      <a href="selfdev.html">자기계발</a>
+    </div> -->
+    <section id="whats-new">
+      <h2>새로운 소식</h2>
+      <div class="news-items">
+        <div class="news-item">
+          <h3>신간 도서: "새로운 제목"</h3>
+          <p>저자: 저자 이름</p>
+          <p>간략한 소개...</p>
+          <a href="#">자세히 보기</a>
+        </div>
+        <div class="news-item">
+          <h3>주목할 만한 작가: 작가 이름</h3>
+          <p>작가에 대한 소개...</p>
+          <a href="#">작가 페이지</a>
+        </div>
+        <div class="news-item">
+          <h3>이벤트: 온라인 북 토크</h3>
+          <p>날짜 및 시간: ...</p>
+          <p>참가 방법...</p>
+          <a href="#">참가 신청</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 독서 팁/가이드 -->
+    <section id="reading-tips">
+      <h2>독서 팁 & 가이드</h2>
+      <div class="tips-container">
+        <div class="tip">
+          <h3>효율적인 독서법</h3>
+          <p>
+            SQ3R(훑어보기, 질문하기, 읽기, 되새기기, 복습하기) 방법을 활용하여
+            더 깊이 있는 독서를 해보세요.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>나에게 맞는 책 찾기</h3>
+          <p>
+            다양한 장르와 작가를 탐험하고, 독서 커뮤니티에 참여하여 취향에 맞는
+            책을 찾아보세요.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>독서 습관 만들기</h3>
+          <p>
+            매일 조금씩이라도 꾸준히 읽는 습관을 들이면, 독서가 더 즐거워집니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
