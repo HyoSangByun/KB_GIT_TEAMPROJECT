@@ -48,6 +48,10 @@
             font-weight: bold;
             margin: 10px 0;
         }
+        .book-author {
+            font-size:16px;
+            
+        }
         .book-price {
             color: #555;
             font-size: 16px;
@@ -75,19 +79,25 @@
         <script>
             const books = [
                 { title:"어른의 행복은 조용하다",
+                author: "태수 저",
                     cover: "https://image.yes24.com/goods/136298166/XL",
                     price: "16,020원",
                     link: "https://www.yes24.com/product/goods/136298166"
                 }, { title:"삶이라는 완벽한 농담",
+                author:"이경규 저",
                     cover: "https://image.yes24.com/goods/142843658/XL",
                     price: "16,020원",
                     link: "https://www.yes24.com/product/goods/142843658"
                 }, { title:"살아갈 날들을 위한 괴테의 시",
+                author:"김종원 저",
+
                     cover: "https://image.yes24.com/goods/141253984/XL",
                     price: "17,100원",
                     link: "https://www.yes24.com/product/goods/141253984"
                 }, {
                     title:"양심",
+                    author:"최재천, 팀최마존 저"
+,
                     cover:"https://image.yes24.com/goods/141228556/XL",
                     price:"16,200원",
                     link: "https://www.yes24.com/product/goods/141228556"
@@ -103,6 +113,7 @@
                 bookCard.innerHTML = `
                 <img src="${book.cover}" alt="${book.title}">
                 <div class="book-title">${book.title}</div>
+                <div class="book-author">${book.author}</div>
                 <div class="book-price">${book.price}</div>
                 <a href="${book.link}" target="_blank" class="book-link">YES24 구매 링크</a>
             `;
